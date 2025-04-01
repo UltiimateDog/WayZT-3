@@ -24,10 +24,10 @@ struct SearchBar: View {
                     .scaledToFit()
                     .foregroundStyle(.accent)
                     .fontWeight(.semibold)
-                    .frame(height: 30)
+                    .frame(height: 28)
                     
             }
-            .padding(.leading, 15)
+            .padding(.leading, 12)
             
             // MARK: - TEXT
             TextField(placeholderText, text: $searchText)

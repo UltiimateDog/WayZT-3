@@ -16,7 +16,6 @@ struct ProfileView: View {
     
     @State private var anim = false
     @State private var showFull = false
-    @State var wish = false
     @Binding var changePic: Bool
     
     @State private var avatarItem: PhotosPickerItem?
@@ -27,8 +26,6 @@ struct ProfileView: View {
                 .fill(Color.white)
             Rectangle()
                 .fill(colorP.c5.opacity(0.3))
-            EmitterViewIcon(wish: $wish)
-                .blur(radius: changePic ? 2 : 0)
             topBack()
                 .blur(radius: changePic ? 2 : 0)
             notiButton()

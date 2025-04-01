@@ -8,28 +8,26 @@
 import SwiftUI
 
 struct MapView: View {
-    let dWidth: Double
-    let dHeight: Double
     let colorP = ColorPalette()
-    @State var wish = false
-    
+    let dWidth: Double = 300
+    let dHeight: Double = 300
+   
+    // MARK: - BODY
     var body: some View {
         ZStack {
             Rectangle()
                 .fill(Color.white)
             Rectangle()
                 .fill(colorP.c5.opacity(0.4))
-            EmitterViewIcon(wish: $wish)
             
             VStack(spacing: 10) {
                 SearchBar(placeholderText: "Busca un servicio")
                     .padding(.bottom, 10)
-                RoundedRectangle(cornerRadius: dWidth * 0.06)
-                    .fill(colorP.c1)
-                    .frame(height: dHeight*0.35)
-                    .overlay {
-                        MapProgress(dWidth: dWidth, dHeight: dHeight)
-                    }
+                
+            
+                MapProgress()
+                    
+                
                 HStack(spacing: 10) {
                     NavigationLink {
                         RecycleMap()
@@ -62,5 +60,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(dWidth: 300, dHeight: 700)
+    MapView()
 }
