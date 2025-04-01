@@ -8,48 +8,53 @@
 import SwiftUI
 
 struct ArticlePreview: View {
+    // MARK: - ATTRIBUTES
     var modelData: ModelData = .shared
-    let colorP = ColorPalette()
     let data: Articulo
     
+    // MARK: - BODY
     var body: some View {
-        RoundedRectangle(cornerRadius: 5)
-            .fill(colorP.c1)
-            .frame(height: 70)
+        RoundedRectangle(cornerRadius: 20)
+            .fill(.mainBackground)
+            .frame(height: 140)
             .overlay {
                 HStack {
                     data.previewImage
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 40)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .frame(width: 120, height: 120)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text(data.title)
                             .font(.headline)
                             .bold()
-                            .foregroundStyle(Color.black)
+                            .foregroundStyle(.second)
                             .multilineTextAlignment(.leading)
                         Spacer()
                         HStack {
                             data.authorPicture
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 5)
+                                .frame(width: 25)
                                 .clipShape(Circle())
+                            
                             Text(data.author)
                                 .font(.caption)
                                 .italic()
                                 .lineLimit(1)
-                                .foregroundStyle(Color.black)
+                                .foregroundStyle(.second)
+                            
                             Spacer()
+                            
                             Text(data.date, style: .date)
                                 .font(.caption)
                                 .italic()
                                 .lineLimit(1)
-                                .foregroundStyle(Color.black)
+                                .foregroundStyle(.second)
                         }
                     }
-                }
+                }//: HSTACK
                 .padding(.all, 10)
             }
     }
@@ -57,4 +62,5 @@ struct ArticlePreview: View {
 
 #Preview {
     ArticlePreview(data: testArticles().A1)
+        .background(.black)
 }
