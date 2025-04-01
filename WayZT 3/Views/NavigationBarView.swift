@@ -28,7 +28,6 @@ struct NavigationBarView: View {
                 ArticlesView()
                     .tag(Tab.Articles)
                     
-                
                 ProfileView()
                     .tag(Tab.Profile)
                 

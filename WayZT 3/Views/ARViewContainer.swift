@@ -14,6 +14,7 @@ struct ARViewContainer: UIViewRepresentable {
     // MARK: - ATTRIBUTES
     var recogd: ModelData = .shared
     @Binding var enableAR: Bool
+    @Binding var t: Bool
     
     // MARK: - UIVIEW
     func makeUIView(context: Context) -> ARView {
@@ -38,7 +39,7 @@ struct ARViewContainer: UIViewRepresentable {
                 
         let shader = SimpleMaterial(color: UIColor(red: 0, green: 1, blue: 0, alpha: 1.0), roughness: 1, isMetallic: true)
         let text = MeshResource.generateText(
-            enableAR ? "\(recogd.IdentfiedWaste)" : "",
+            enableAR && !t ? "\(recogd.IdentfiedWaste)" : "",
             extrusionDepth: 0.05,
             font: .init(name: "Helvetica", size: 0.05)!,
             alignment: .center
