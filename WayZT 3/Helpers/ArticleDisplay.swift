@@ -12,7 +12,6 @@ struct ArticleDisplay: View {
     let dHeight: Double
     let data: Articulo
     let colorP = ColorPalette()
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     var body: some View {
         ZStack {

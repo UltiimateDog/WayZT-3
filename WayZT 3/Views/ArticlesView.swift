@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ArticlesView: View {
     var modelData: ModelData = .shared
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
     @State var index = -1
     let dWidth: Double
     let dHeight: Double
@@ -39,7 +38,6 @@ struct ArticlesView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: dWidth * 0.06))
             }
-            .padding(safeAreaInsets)
             .padding(.horizontal, 10)
             .padding(.bottom, dWidth / 5 + 10)
         }

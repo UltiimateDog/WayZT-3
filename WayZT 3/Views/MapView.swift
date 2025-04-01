@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MapView: View {
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
     let dWidth: Double
     let dHeight: Double
     let colorP = ColorPalette()
@@ -56,7 +55,6 @@ struct MapView: View {
                     }
                 }
             }
-            .padding(safeAreaInsets)
             .padding(.horizontal, 10)
             .padding(.bottom, dWidth / 5 + 10)
         }

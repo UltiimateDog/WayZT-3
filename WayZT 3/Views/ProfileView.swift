@@ -9,7 +9,6 @@ import SwiftUI
 import PhotosUI
 
 struct ProfileView: View {
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
     var modelData: ModelData = .shared
     let dWidth: Double
     let dHeight: Double
@@ -43,7 +42,6 @@ struct ProfileView: View {
                 seeFullButton()
                     .blur(radius: changePic ? 2 : 0)
             }
-            .padding(safeAreaInsets)
             .padding(.horizontal, 10)
             .padding(.bottom, dWidth / 5 + 10)
         }
@@ -114,7 +112,7 @@ struct ProfileView: View {
                 LinearGradient(colors: [colorP.c5, colorP.c2, colorP.c3], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
             .shadow(color: Color.green, radius: 12)
-            .frame(height: safeAreaInsets.top + dWidth * 0.3)
+            .frame(height: dWidth * 0.3)
     }
     
     func notiButton() -> some View {
@@ -139,7 +137,6 @@ struct ProfileView: View {
                     .foregroundStyle(colorP.c6)
             }
         }
-        .padding(safeAreaInsets)
         .padding(.horizontal, 17)
         .padding(.bottom, dWidth / 5 + 10)
     }

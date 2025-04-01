@@ -87,7 +87,7 @@ struct NavigationBarView: View {
 
 // These lines are used to maintain the slide feature to go back to another view
 // These are not actually use in this app
-extension UINavigationController: UIGestureRecognizerDelegate {
+extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
