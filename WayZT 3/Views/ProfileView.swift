@@ -28,8 +28,11 @@ struct ProfileView: View {
                 .opacity(0.2)
             
             Rectangle()
-                .fill(.second)
-                .shadow(color: .second, radius: 12)
+                .fill(
+                    LinearGradient(colors: [.accent, .accent, .accent],
+                                   startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .shadow(color: .accent, radius: 12)
                 .frame(height: 150)
                 .blur(radius: changePic ? 2 : 0)
                 .ignoresSafeArea()
@@ -117,7 +120,7 @@ struct ProfileView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 35)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(.mainBackground)
             }
             Spacer()
             Button {
@@ -127,7 +130,7 @@ struct ProfileView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 30)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(.mainBackground)
             }
         }
         .padding(.horizontal, 17)
@@ -148,7 +151,7 @@ struct ProfileView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
-                    .foregroundStyle(colorP.c6)
+                    .foregroundStyle(.accent)
                     .offset(y: -15)
             }
         }
