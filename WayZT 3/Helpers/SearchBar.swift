@@ -8,83 +8,54 @@
 import SwiftUI
 
 struct SearchBar: View {
+    // MARK: - ATTRIBUTES
     @State var searchText = ""
-    let dWidth: Double
-    let dHeight: Double
-    let colorP = ColorPalette()
+    let placeholderText: String
     
+    // MARK: - BODY
     var body: some View {
         HStack {
+            // MARK: - SEARCH
             Button {
                 //
             } label: {
                 Image(systemName: "sparkle.magnifyingglass")
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(colorP.c6)
-                    .frame(height: dHeight*0.035)
-                    .fixedSize()
+                    .foregroundStyle(.accent)
+                    .fontWeight(.semibold)
+                    .frame(height: 30)
+                    
             }
-            .padding(.leading, dHeight*0.01)
-            TextField("Busca un servicio", text: $searchText)
-                .foregroundStyle(colorP.c6)
+            .padding(.leading, 15)
+            
+            // MARK: - TEXT
+            TextField(placeholderText, text: $searchText)
+                .foregroundStyle(.second)
                 .bold()
+            
+            // MARK: - CANCEL
             Button {
                 searchText = ""
             } label: {
                 Image(systemName: "xmark")
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(colorP.c6)
-                    .frame(height: dHeight*0.022)
+                    .foregroundStyle(.accent)
+                    .fontWeight(.semibold)
+                    .frame(height: 20)
             }
         }
-        .padding(.trailing, 10)
-        .background(RoundedRectangle(cornerRadius: dHeight*0.022)
-            .fill(colorP.c4)
-        .frame(height: dHeight*0.044))
-    }
-}
-
-struct SearchBar2: View {
-    @State var searchText = ""
-    let dWidth: Double
-    let dHeight: Double
-    let colorP = ColorPalette()
-    
-    var body: some View {
-        HStack {
-            Button {
-                //
-            } label: {
-                Image(systemName: "sparkle.magnifyingglass")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(colorP.c6)
-                    .frame(height: dHeight*0.035)
-                    .fixedSize()
-            }
-            .padding(.leading, dHeight*0.01)
-            TextField("Busca un articulo", text: $searchText)
-                .foregroundStyle(colorP.c6)
-                .bold()
-            Button {
-                searchText = ""
-            } label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(colorP.c6)
-                    .frame(height: dHeight*0.022)
-            }
-        }
-        .padding(.trailing, 10)
-        .background(RoundedRectangle(cornerRadius: dHeight*0.022)
-            .fill(colorP.c4)
-        .frame(height: dHeight*0.044))
+        .padding(.trailing, 20)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.mainBackground)
+            .frame(height: 40)
+        )
     }
 }
 
 #Preview {
-    SearchBar(dWidth: 300, dHeight: 700)
+    SearchBar(placeholderText: "Busca un servicio")
+        .background(.black)
 }

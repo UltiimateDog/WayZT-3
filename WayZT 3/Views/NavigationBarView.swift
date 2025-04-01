@@ -29,16 +29,20 @@ struct NavigationBarView: View {
                         .onAppear {
                             changeProfPic = false
                         }
-                    ArticlesView(dWidth: dWidth, dHeight: dHeight)
+                    
+                    ArticlesView()
                         .ignoresSafeArea()
                         .ignoresSafeArea(.keyboard)
                         .tag(Tab.Articles)
                         .onAppear {
                             changeProfPic = false
                         }
+                        .padding(.top, 40)
+                    
                     ProfileView(dWidth: dWidth, dHeight: dHeight, changePic: $changeProfPic)
                         .ignoresSafeArea()
                         .tag(Tab.Profile)
+                    
                     MapView(dWidth: dWidth, dHeight: dHeight)
                         .ignoresSafeArea()
                         .ignoresSafeArea(.keyboard)

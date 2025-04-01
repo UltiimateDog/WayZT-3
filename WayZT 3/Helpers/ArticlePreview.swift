@@ -9,22 +9,20 @@ import SwiftUI
 
 struct ArticlePreview: View {
     var modelData: ModelData = .shared
-    let dWidth: Double
-    let dHeight: Double
     let colorP = ColorPalette()
     let data: Articulo
     
     var body: some View {
-        RoundedRectangle(cornerRadius: dWidth * 0.05)
+        RoundedRectangle(cornerRadius: 5)
             .fill(colorP.c1)
-            .frame(height: dHeight * 0.15)
+            .frame(height: 70)
             .overlay {
                 HStack {
                     data.previewImage
                         .resizable()
                         .scaledToFill()
-                        .frame(width: dHeight * 0.13)
-                        .clipShape(RoundedRectangle(cornerRadius: dWidth * 0.04))
+                        .frame(width: 40)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                     VStack(alignment: .leading, spacing: 0) {
                         Text(data.title)
                             .font(.headline)
@@ -36,7 +34,7 @@ struct ArticlePreview: View {
                             data.authorPicture
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: dWidth*0.05)
+                                .frame(width: 5)
                                 .clipShape(Circle())
                             Text(data.author)
                                 .font(.caption)
@@ -58,5 +56,5 @@ struct ArticlePreview: View {
 }
 
 #Preview {
-    ArticlePreview(dWidth: 300, dHeight: 700, data: testArticles().A1)
+    ArticlePreview(data: testArticles().A1)
 }

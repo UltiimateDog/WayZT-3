@@ -22,7 +22,7 @@ struct MapView: View {
             EmitterViewIcon(wish: $wish)
             
             VStack(spacing: 10) {
-                SearchBar(dWidth: dWidth, dHeight: dHeight)
+                SearchBar(placeholderText: "Busca un servicio")
                     .padding(.bottom, 10)
                 RoundedRectangle(cornerRadius: dWidth * 0.06)
                     .fill(colorP.c1)

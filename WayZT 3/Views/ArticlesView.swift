@@ -10,8 +10,6 @@ import SwiftUI
 struct ArticlesView: View {
     var modelData: ModelData = .shared
     @State var index = -1
-    let dWidth: Double
-    let dHeight: Double
     let colorP = ColorPalette()
     let articulos = [testArticles().A6, testArticles().A2, testArticles().A3, testArticles().A5, testArticles().A4, testArticles().A1]
     @State var wish = false
@@ -25,25 +23,25 @@ struct ArticlesView: View {
             EmitterViewIcon(wish: $wish)
 
             VStack(spacing: 0) {
-                SearchBar2(dWidth: dWidth, dHeight: dHeight)
+                SearchBar(placeholderText: "Busca un articulo")
                     .padding(.bottom, 10)
                 ScrollView(showsIndicators: false) {
                     ForEach(articulos) { articulo in
                         NavigationLink {
-                            ArticleDisplay(dWidth: dWidth, dHeight: dHeight, data: articulo)
+                            ArticleDisplay(data: articulo)
                         } label: {
-                            ArticlePreview(dWidth: dWidth, dHeight: dHeight, data: articulo)
+                            ArticlePreview(data: articulo)
                         }
                     }
                 }
-                .clipShape(RoundedRectangle(cornerRadius: dWidth * 0.06))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
             }
             .padding(.horizontal, 10)
-            .padding(.bottom, dWidth / 5 + 10)
+            .padding(.bottom, 50)
         }
     }
 }
 
 #Preview {
-    ArticlesView(dWidth: 300, dHeight: 700)
+    ArticlesView()
 }

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ArticleDisplay: View {
-    let dWidth: Double
-    let dHeight: Double
     let data: Articulo
     let colorP = ColorPalette()
     
@@ -32,7 +30,7 @@ struct ArticleDisplay: View {
                             Image(systemName: "link.circle")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: dWidth*0.05)
+                                .frame(width: 40)
                         })
                     }
                     HStack {
@@ -46,7 +44,7 @@ struct ArticleDisplay: View {
                             .bold()
                             .italic()
                     }
-                    ForEach(0..<data.textBody.count) { i in
+                    ForEach(0..<data.textBody.count, id:\.self) { i in
                         Text(data.textBody[i])
                             .foregroundStyle(Color.black)
                             .padding(.top, 10)
@@ -55,7 +53,7 @@ struct ArticleDisplay: View {
                         Image(systemName: "link.circle")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: dWidth*0.05)
+                            .frame(width: 40)
                     })
                 }
             }
@@ -65,5 +63,5 @@ struct ArticleDisplay: View {
 }
 
 #Preview {
-    ArticleDisplay(dWidth: 300, dHeight: 700, data: testArticles().A6)
+    ArticleDisplay(data: testArticles().A6)
 }
