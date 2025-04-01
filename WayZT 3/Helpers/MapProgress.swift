@@ -34,7 +34,10 @@ struct MapProgress: View {
                             .resizable()
                             .scaledToFit()
                             .foregroundStyle(.accent)
+                            .fontWeight(.semibold)
                     }
+                    
+                    // MARK: - PROGRESS BAR
                     HStack {
                         Text(String(category.waste))
                             .font(.footnote)
@@ -74,7 +77,6 @@ struct WasteProgressBar: View {
     // MARK: - ATTRIBUTE
     var modelData: ModelData = .shared
     @State private var anim = false
-    let colorP = ColorPalette()
     
     // MARK: - BODY
     var body: some View {
@@ -98,7 +100,7 @@ struct WasteProgressBar: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 90)
-                .scaleEffect(x: anim ? 1.1 : 1, y: anim ? 1.1 : 1)
+                .scaleEffect(anim ? 1.1 : 1)
                 .onAppear {
                     withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                         anim.toggle()

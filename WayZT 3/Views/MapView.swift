@@ -8,48 +8,47 @@
 import SwiftUI
 
 struct MapView: View {
-    let colorP = ColorPalette()
+    // MARK: - ATTRIBUTES
     let dWidth: Double = 300
     let dHeight: Double = 300
    
     // MARK: - BODY
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Rectangle()
-                .fill(Color.white)
-            Rectangle()
-                .fill(colorP.c5.opacity(0.4))
+                .fill(.second)
+                .ignoresSafeArea()
+                .opacity(0.3)
             
             VStack(spacing: 10) {
                 SearchBar(placeholderText: "Busca un servicio")
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 5)
                 
-            
                 MapProgress()
-                    
                 
+                // MARK: - GROUP
                 HStack(spacing: 10) {
                     NavigationLink {
                         RecycleMap()
                     } label: {
-                        TypeWasteButton(dWidth: dWidth, dHeight: dHeight, i: 0)
+                        TypeWasteButton(i: 0)
                     }
                     NavigationLink {
                         OrganicMap()
                     } label: {
-                        TypeWasteButton(dWidth: dWidth, dHeight: dHeight, i: 1)
+                        TypeWasteButton(i: 1)
                     }
                 }
                 HStack(spacing: 10) {
                     NavigationLink {
                         GlassMap()
                     } label: {
-                        TypeWasteButton(dWidth: dWidth, dHeight: dHeight, i: 2)
+                        TypeWasteButton(i: 2)
                     }
                     NavigationLink {
                         ElectronicsMap()
                     } label: {
-                        TypeWasteButton(dWidth: dWidth, dHeight: dHeight, i: 3)
+                        TypeWasteButton(i: 3)
                     }
                 }
             }

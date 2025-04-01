@@ -45,7 +45,7 @@ struct Profile {
         
         RecWaste = 10
         RecWasteGoal = 10
-        OrgWaste = 3
+        OrgWaste = 6
         OrgWasteGoal = 6
         GlassWaste = 4
         GlassWasteGoal = 8
