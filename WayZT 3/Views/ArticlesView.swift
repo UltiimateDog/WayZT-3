@@ -10,7 +10,6 @@ import SwiftUI
 struct ArticlesView: View {
     // MARK: - ATTRIBUTES
     var modelData: ModelData = .shared
-    @State var index = -1
     let articles = Article.testArticles
     
     // MARK: - BODY

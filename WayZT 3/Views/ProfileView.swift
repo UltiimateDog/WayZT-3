@@ -14,8 +14,7 @@ struct ProfileView: View {
     let colorP = ColorPalette()
     
     @State private var anim = false
-    @State private var showFull = false
-    @Binding var changePic: Bool
+    @State var changePic = false
     
     @State private var avatarItem: PhotosPickerItem?
 
@@ -47,6 +46,9 @@ struct ProfileView: View {
                     .blur(radius: changePic ? 2 : 0)
             }
             .padding(.horizontal, 10)
+        }
+        .onDisappear{
+            changePic = false
         }
     }
     
@@ -83,12 +85,7 @@ struct ProfileView: View {
                     withAnimation() {
                         changePic = true
                     }
-                } onPressingChanged: { a in
-                    withAnimation() {
-                        changePic = a
-                    }
                 }
-                
         }
         .popover(isPresented: $changePic) {
             HStack {

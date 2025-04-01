@@ -10,8 +10,6 @@ import SwiftUI
 struct NavigationBarView: View {
     // MARK: - ATTRIBUTES
     @State var currentTab: Tab = .Profile
-    @State var changeProfPic = false
-    let colorP = ColorPalette()
     
     // Hide native bar
     init () {
@@ -23,24 +21,20 @@ struct NavigationBarView: View {
             TabView(selection: $currentTab) {
                 CameraView()
                     .tag(Tab.Camera)
-                    .onAppear {
-                        changeProfPic = false
-                    }
+                    
+                FootprintView()
+                    .tag(Tab.Footprint)
                 
                 ArticlesView()
                     .tag(Tab.Articles)
-                    .onAppear {
-                        changeProfPic = false
-                    }
+                    
                 
-                ProfileView(changePic: $changeProfPic)
+                ProfileView()
                     .tag(Tab.Profile)
                 
                 MapView()
                     .tag(Tab.Maps)
-                    .onAppear {
-                        changeProfPic = false
-                    }
+                    
             }
             .overlay(alignment: .bottom) {
                 NavTabBar(selected: $currentTab)
