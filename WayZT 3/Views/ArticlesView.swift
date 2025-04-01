@@ -11,31 +11,26 @@ struct ArticlesView: View {
     // MARK: - ATTRIBUTES
     var modelData: ModelData = .shared
     @State var index = -1
-    let colorP = ColorPalette()
-    let articulos = [testArticles().A6, testArticles().A2, testArticles().A3, testArticles().A5, testArticles().A4, testArticles().A1]
-    @State var wish = false
+    let articles = Article.testArticles
     
     // MARK: - BODY
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.white)
-            Rectangle()
-                .fill(colorP.c5.opacity(0.6))
+                .fill(.second)
             
-            EmitterViewIcon(wish: $wish)
-
             VStack(spacing: 0) {
                 SearchBar(placeholderText: "Busca un articulo")
                     .padding(.bottom, 15)
                 
                 ScrollView(showsIndicators: false) {
-                    ForEach(articulos) { articulo in
+                    ForEach(articles) { articulo in
                         NavigationLink {
                             ArticleDisplay(data: articulo)
                         } label: {
                             ArticlePreview(data: articulo)
                         }
+                        .padding(.bottom, 5)
                     }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 20))

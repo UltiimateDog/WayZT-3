@@ -8,60 +8,52 @@
 import SwiftUI
 
 struct ArticleDisplay: View {
-    let data: Articulo
-    let colorP = ColorPalette()
+    // MARK: - ATTRIBUTES
+    let data: Article
     
+    // MARK: - BODY
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.white)
-                .ignoresSafeArea()
-            Rectangle()
-                .fill(colorP.c5.opacity(0.08))
-                .ignoresSafeArea()
-            VStack {
-                ScrollView(showsIndicators: false) {
-                    HStack {
-                        Text(data.title)
-                            .font(.title)
-                            .bold()
-                            .foregroundStyle(Color.black)
-                        Link(destination: URL(string: data.URL)!, label: {
-                            Image(systemName: "link.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40)
-                        })
-                    }
-                    HStack {
-                        Text(data.author)
-                            .foregroundStyle(Color.black)
-                            .bold()
-                            .italic()
-                        Divider()
-                        Text(data.date, style: .date)
-                            .foregroundStyle(Color.black)
-                            .bold()
-                            .italic()
-                    }
-                    ForEach(0..<data.textBody.count, id:\.self) { i in
-                        Text(data.textBody[i])
-                            .foregroundStyle(Color.black)
-                            .padding(.top, 10)
-                    }
-                    Link(destination: URL(string: data.URL)!, label: {
-                        Image(systemName: "link.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40)
-                    })
-                }
+        ScrollView(showsIndicators: false) {
+            HStack {
+                Text(data.title)
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.second)
+                Link(destination: URL(string: data.URL)!, label: {
+                    Image(systemName: "link.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                })
             }
-            .padding(.horizontal, 15)
+            HStack {
+                Text(data.author)
+                    .foregroundStyle(.second)
+                    .bold()
+                    .italic()
+                Divider()
+                Text(data.date, style: .date)
+                    .foregroundStyle(.second)
+                    .bold()
+                    .italic()
+            }
+            ForEach(0..<data.textBody.count, id:\.self) { i in
+                Text(data.textBody[i])
+                    .foregroundStyle(.second)
+                    .padding(.top, 10)
+            }
+            Link(destination: URL(string: data.URL)!, label: {
+                Image(systemName: "link.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40)
+            })
         }
+        .padding(.horizontal, 15)
+        .background(.mainBackground)
     }
 }
 
 #Preview {
-    ArticleDisplay(data: testArticles().A6)
+    ArticleDisplay(data: Article.testArticles[0])
 }

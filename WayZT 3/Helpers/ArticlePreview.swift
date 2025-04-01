@@ -10,7 +10,7 @@ import SwiftUI
 struct ArticlePreview: View {
     // MARK: - ATTRIBUTES
     var modelData: ModelData = .shared
-    let data: Articulo
+    let data: Article
     
     // MARK: - BODY
     var body: some View {
@@ -61,6 +61,6 @@ struct ArticlePreview: View {
 }
 
 #Preview {
-    ArticlePreview(data: testArticles().A1)
+    ArticlePreview(data: Article.testArticles[0])
         .background(.black)
 }
