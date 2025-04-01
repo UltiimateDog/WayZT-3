@@ -16,11 +16,14 @@ struct NavTabBar: View {
         VStack {
             Spacer()
             ZStack {
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                RoundedRectangle(cornerRadius: 30)
                     .fill(.mainBackground)
+                    .strokeBorder(.accent, lineWidth: 2)
                     .frame(height: 50)
                     .shadow(color: .mainBackground.opacity(0.4),
                             radius: 12, x: 0, y: 10)
+                
+                
                 
                 TabsLayoutView(selectedTab: $selected)
             }
@@ -71,7 +74,7 @@ fileprivate struct TabsLayoutView: View {
                                     radius: 5)
                             .background {
                                 Circle()
-                                    .stroke(lineWidth: 7)
+                                    .stroke(lineWidth: 5)
                                     .foregroundColor(.accent)
                             }
                             .offset(y: -20)
